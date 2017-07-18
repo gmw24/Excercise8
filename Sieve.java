@@ -11,7 +11,7 @@ public class Sieve {
      * @param prime - boolean array indicating primality
      */
     
-    public static void printsieve(int[] results, boolean[] prime) {
+    public static void printSieve(int[] results, boolean[] prime) {
 	    System.out.print("> ");
 	    char c = ' ';
 
@@ -34,12 +34,12 @@ public class Sieve {
      * @param results array of ints to print out
      */
     
-    public static void PrintSieve(int[] results) {
+    public static void printSieve(int[] results) {
 
 	// As long as there are elements in the array,
 	// print it.  Otherwise, print "BLANK".
 	
-	if (results.length == 0 || results != null) {
+	if (results.length != 0) {
 	    System.out.print("> ");
 	    for (int j = 1; j < results.length;) {
 		System.out.print(results[j] + " ");
@@ -83,7 +83,8 @@ public class Sieve {
 	ArrayList<Integer> actual = new ArrayList<Integer>();
 	for (int j = 0; j < results.length; j++) {
 	    if (prime[j]) {
-		actual.add(new Integer(j + 1));
+		//actual.add(new Integer(j + 1));
+		actual.add(Integer.valueOf(j+1));
 	    }
 	}
 
@@ -152,7 +153,7 @@ public class Sieve {
 	    ptr++;
 	}
 	// Debug-print the behind the scenes sieve values
-	// printsieve(results, prime);
+	// printSieve(results, prime);
 	results = convertResults(results, prime);
 	return results;
     }
@@ -195,7 +196,7 @@ public class Sieve {
 	}
 	} else {
 	    // User forgot to enter an argument!  
-	    new IllegalArgumentException();
+	    throw new IllegalArgumentException();
 	}
 	return toReturn;
     }
@@ -233,7 +234,7 @@ public class Sieve {
 	// Calculate sieve and print it out
 	int[] sieve = generateSieve(_max);
 	int[] results = calculateSieve(sieve);
-	PrintSieve(results);
+	printSieve(results);
     }
     
 }
